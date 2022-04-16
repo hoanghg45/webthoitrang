@@ -37,6 +37,7 @@ Route::get('/show-cart', [CartController::class, 'show_cart_quantity']);
 Route::get('/check-out', [CheckOutController::class, 'show_checkout']);
 //user
 Route::get('/sign-up', [UserController::class, 'sign_up']);
+Route::post('/register', [UserController::class, 'register']);
 
 
 //backend

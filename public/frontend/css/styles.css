@@ -2915,7 +2915,7 @@ span {
 input {
     height: 34px;
     width: 100px;
-    text-align: center;
+    /* text-align: center; */
     font-size: 26px;
     border: 1px solid #ddd;
     border-radius: 4px;

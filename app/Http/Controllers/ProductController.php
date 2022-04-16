@@ -138,15 +138,15 @@ class ProductController extends Controller
 
     public function new_product(){
     // {
-    //     $category = ModelsCategory::where('category_status','1')->orderBy('category_id')->get();
-    //     $all_product =  ModelsProduct::where('product_status','1')
-    //                         ->orderBy('created_at','desc')
-    //                         ->paginate(9);
+        $category = ModelsCategory::where('category_status','1')->orderBy('category_id')->get();
+        $all_product =  ModelsProduct::where('product_status','1')
+                            ->orderBy('created_at','desc')
+                            ->paginate(9);
 
-    //     # code...
-        $count_product = ModelsProduct::all()->count();
-        // return view('pages.products.new_product')->with('product',$all_product)->with('category',$category);
-       return print_r($count_product);
+        # code...
+        
+        return view('pages.products.new_product')->with('product',$all_product)->with('category',$category);
+       
         // $all_product =  ModelsProduct::join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.category_id')
         //     ->orderBy('product_id')
         //     ->get();

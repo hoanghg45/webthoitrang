@@ -108,10 +108,12 @@
                     <li class="nav-item">
                         <!-- user login -->
                         <div class="header-card header-icon desktop-cart-wrapper" margin-left="30px">
-                            <a href="" class="nav-link">
+                            <a href="{{ url('/sign-up')}}" class="nav-link">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="cart-count"></span>
+                                Minh Hoàng
+                                
                             </a>
+                            
                             <div class="quickview-cart">
                                 <h3>
                                     Giỏ hàng trống
