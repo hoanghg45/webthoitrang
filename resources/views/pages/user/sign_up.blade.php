@@ -5,20 +5,36 @@
             <div class="row">
                 <div class="col-xl-6 offset-xl-3">
                     <div class="text-box mt-5 mb-5">
-
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                         <!-- Sign Up Form -->
                         <form action="{{URL::to('/register')}}" method="POST" >
                             @csrf
                             <h1 style="text-align: center ">ĐĂNG KÝ</h1>
                             <div class="mb-4 form-floating">
-                                <input required type="email" name="user_email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
+                                <input required type="email" name="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com" @error('email') is-invalid @enderror>
                                 <label for="floatingInput">Email address</label>
+                              
                             </div>
                             <div class="mb-4 form-floating">
-                                <input required type="text" name="user_name" class="form-control" id="floatingInput2"
-                                    placeholder="Your name">
+                                <input required type="text" name="name" class="form-control" id="floatingInput2"
+                                    placeholder="Your name" @error('name') is-invalid @enderror>
                                 <label for="floatingInput">Your name</label>
+                               
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <input required type="tel" name="phone" class="form-control" id="floatingInput2" @error('phone') is-invalid @enderror
+                                    placeholder="Your phone">
+                                <label for="floatingInput">Your phone</label>
+                                
                             </div>
                             <div class="mb-4 form-floating">
                                 <input required type="password" class="form-control @error('password') is-invalid @enderror"
@@ -50,4 +66,5 @@
         </div>
         <!-- end of container -->
     </div>
+ 
 @endsection

@@ -53,7 +53,7 @@
     <link href="{{ asset('public/frontend/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/swiper.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/styles.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('public/frontend/images/favi_3h.png') }}" type="image/png">
@@ -104,15 +104,32 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#details">LookBook</a>
                     </li>
+                    <li class="nav-item">
+                        <!-- giỏ hàng -->
+                        <div id="show-cart"></div>
+                    </li>
 
                     <li class="nav-item">
                         <!-- user login -->
                         <div class="header-card header-icon desktop-cart-wrapper" margin-left="30px">
-                            <a href="{{ url('/sign-up')}}" class="nav-link">
+                           @php
+                               if(!session()->has('user_email')){
+                                   echo '
+                                <a href="'.url('/sign-in').'" class="nav-link">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                Minh Hoàng
-                                
-                            </a>
+                                Đăng nhập     
+                                </a>';
+                                 
+                               }else {
+                                echo '
+                                <a href="'.url('/sign-in').'" class="nav-link">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                '.session()->get('user_name').'    
+                                </a>';
+                               }
+                           @endphp
+                            
+                            
                             
                             <div class="quickview-cart">
                                 <h3>
@@ -126,33 +143,27 @@
                                 </ul>
                             </div>
                         </div>
+                        
                     </li>
-                    {{-- <li class="nav-item">
-                        <!-- giỏ hàng -->
-                        <div class="header-card header-icon desktop-cart-wrapper" margin-left="30px">
-                            <a href="{{ url('/cart') }}" class="nav-link">
-                                <i class="fa fa-shopping-bag" aria-hidden="true"></i> (
-                                <span class="cart-count">0</span>)
-                            </a>
-                             
-                           {{-- <div class="quickview-cart">
-                                <h3>
-                                    Giỏ hàng trống
-                                </h3>
-                                <span class="close-qv-cart"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                <ul class="no-bullets cart-list">
-                                    <p class="cart-empty text-left">
-                                        Chưa có sản phẩm nào trong giỏ hàng
-                                    </p>
-                                </ul>
-                            </div>
-                        </div> 
-                    </li> --}}
-                    <div id="show-cart"></div>
+                   
+                    <li class="nav-item">
+                        <div class="header-card header-icon desktop-cart-wrapper">
+                        <!-- Logout -->
+                        @php
+                        if(session()->has('user_email')){
+                                 echo '
+                              <a href="'.url('/log-out').'" class="nav-link">
+                              <i class="fa fa-sign-out" aria-hidden="true"></i>
+                              Logout  
+                              </a>';
+                               
+                             }
+                  @endphp
+                  </div>
+                    </li>
+                    
                 </ul>
-                <div class="nav-item" padding-left="30px">
-
-                </div>
+                
             </div>
             <!-- end of navbar-collapse -->
         </div>
@@ -274,10 +285,6 @@
             show_cart();
             
             $('.add-to-cart').click(function() {
-
-
-
-
                 var id = $(this).data('id_product');
                 var cart_product_id = $('.cart_product_id_' + id).val();
                 var cart_product_name = $('.cart_product_name_' + id).val();
@@ -322,6 +329,33 @@
             });
         });
     </script>
+       @php
+       if (session()->has('message')) {
+           $message = session()->get('message');
+           echo '<script type="text/javascript">
+               $(document).ready(function() {
+                   swal({
+                       title: "'.$message.'",
+                       icon: "success",
+   
+                   });
+               });
+           </script>';
+           Session::put('message',null);
+       } 
+       elseif (session()->has('error')) {
+                $error = session()->get('error');
+                echo '<script type="text/javascript">
+                    $(document).ready(function() {
+                        swal("'.$error.'", {
+                            icon: "error",
+                        });
+                    });
+                </script>';
+                Session::put('error',null);
+            }
+       
+   @endphp
 </body>
 
 </html>

@@ -108,7 +108,8 @@
                                         <p><em>Vận chuyển</em></p>
                                         <button type="submit" name="update_quantity" class="btn btn-danger update-cart">Cập
                                             nhật</button>
-                                        <button type="submit" name="checkout" class="btn btn-success">Thanh toán</button>
+                                            <a name="checkout" class="btn btn-success" href="{{ URL::to('/check-out')}}">Thanh toán</a>
+                                        
                                     </div>
 
                                 </div>
@@ -116,6 +117,7 @@
                         </form>
                         @else
                         <H1>Giỏ hàng trống</H1>
+                        <a href="{{URL::to('/home-page')}}"> Trở lại trang chủ</a>
                     @endif   
                     </div>
                 </div>

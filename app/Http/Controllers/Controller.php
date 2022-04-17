@@ -23,4 +23,16 @@ class Controller extends BaseController
           return  Redirect::to('admin')->send();
         }
     }
+    public function AuthUser()
+    {
+        # code...
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            # code...
+          return  Redirect::to('admin.dashboard');
+        }else{
+          return  Redirect::to('admin')->send();
+        }
+    }
+
 }

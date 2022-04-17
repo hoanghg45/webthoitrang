@@ -35,9 +35,16 @@ Route::get('/delete-cart/{session_id}', [CartController::class, 'delete_cart']);
 Route::get('/show-cart', [CartController::class, 'show_cart_quantity']);
 //checkout
 Route::get('/check-out', [CheckOutController::class, 'show_checkout']);
+Route::post('/payment', [CheckOutController::class, 'payment']);
+Route::get('/show-payment', [CheckOutController::class, 'show_payment']);
 //user
 Route::get('/sign-up', [UserController::class, 'sign_up']);
 Route::post('/register', [UserController::class, 'register']);
+Route::get('/sign-in', [UserController::class, 'sign_in']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/show-user', [UserController::class, 'show_user']);
+Route::get('/log-out', [UserController::class, 'log_out']);
+
 
 
 //backend
