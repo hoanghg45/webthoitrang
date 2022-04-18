@@ -81,9 +81,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url('/homepage') }}">Trang chủ</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Giới thiệu</a>
-                    </li>
+                   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                             aria-expanded="false">Sản phẩm</a>
@@ -101,9 +99,7 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#details">LookBook</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <!-- giỏ hàng -->
                         <div id="show-cart"></div>
@@ -209,12 +205,8 @@
         <div class="footer-left">
             <h3>3H<span>STORE</span></h3>
             <p class="footer-links">
-                <a href="#" class="link-1">Home</a>
-                <a href="#">Blog</a>
-                <a href="#">Pricing</a>
-                <a href="#">About</a>
-                <a href="#">Faq</a>
-                <a href="#">Contact</a>
+                <a href="{{ url('/homepage') }}" class="link-1">Home</a>
+                
             </p>
             <p class="footer-company-name">3H Store © 2022</p>
         </div>

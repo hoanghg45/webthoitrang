@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Middleware\CheckLogin;
 use App\Models\Product;
 
 /*
@@ -34,9 +36,12 @@ Route::post('/update-cart', [CartController::class, 'update_cart']);
 Route::get('/delete-cart/{session_id}', [CartController::class, 'delete_cart']);
 Route::get('/show-cart', [CartController::class, 'show_cart_quantity']);
 //checkout
+
 Route::get('/check-out', [CheckOutController::class, 'show_checkout']);
 Route::post('/payment', [CheckOutController::class, 'payment']);
 Route::get('/show-payment', [CheckOutController::class, 'show_payment']);
+
+
 //user
 Route::get('/sign-up', [UserController::class, 'sign_up']);
 Route::post('/register', [UserController::class, 'register']);
@@ -80,4 +85,9 @@ Route::get('/del-product/{product_id}', [ProductController::class, 'del_product'
 
 Route::get('/unactive-product/{product_id}', [ProductController::class, 'unactive_product']);
 Route::get('/active-product/{product_id}', [ProductController::class, 'active_product']);
+//order
+Route::get('/unactive-order/{product_id}', [AdminController::class, 'unactive_order']);
+Route::get('/active-order/{product_id}', [AdminController::class, 'active_order']);
+//all order
+Route::get('/detail-order/{order_id}', [OrderController::class, 'detail_order']);
 

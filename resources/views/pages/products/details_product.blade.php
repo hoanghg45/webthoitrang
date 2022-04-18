@@ -106,28 +106,16 @@
                                                 onKeyUp="if(this.value>50){this.value='50';}else if(this.value<1){this.value='1';}">
                                             <input type="button" value="+" class="button-plus" data-field="quantity">
                                         </div>
+                                        
                                     </div>
-
-
-                                    <div class="container">
-                                        {{-- <button type="submit" name="add" id="AddToCart"
-                                                class="btnAddToCart">Thêm vào giỏ </button> --}}
-                                        {{-- <button type="submit" name="add" id="AddToCart"
-                                                class="btnAddToCart">Thêm vào giỏ </button> --}}
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="button" class="btn btn-danger add-to-cart"
+                                    <div class="qty-addcart clearfix text-left">
+                                        <div class="col">
+                                    <button type="button" class="btn btn-danger add-to-cart"
                                                     data-id_product="{{ $product->product_id }}">
                                                     <i class="fas fa-cart-plus pr-2"></i> Thêm vào
                                                     giỏ</button>
-                                            </div>
-                                            <div class="col">
-                                                <button type="button" class="btn btn-success " name="add-to-card"><i></i>Mua
-                                                    ngay</button>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                                </div>          
+                                    
                                 </form>
                             </div>
 

@@ -48,7 +48,8 @@ class ProductController extends Controller
         $product->product_desc = $data['product_desc'];
         $product->product_status = $data['product_status'];
         $product->product_price = $data['product_price'];
-        $product->product_size = $data['product_size'];
+        $product->product_quantity = $data['product_quantity'];
+        
         $product->created_at = CarbonCarbon::now();
         $get_image = $request->file('product_image');
         if ($get_image) {
@@ -59,12 +60,12 @@ class ProductController extends Controller
             $product->product_image = $new_image;
             $product->save();
             Session::put('message', 'Thêm thành công!');
-            return Redirect::to('add-product');
+            return Redirect::to('all-product');
         }
         $product->product_image = '';
         Session::put('message', 'Thêm thành công!');
         $product->save();
-        return Redirect::to('add-product');
+        return Redirect::to('all-product');
     }
     public function unactive_product($product_id)
     {
@@ -108,7 +109,7 @@ class ProductController extends Controller
         $product->category_id = $data['category_id'];
         $product->product_desc = $data['product_desc'];
         $product->product_price = $data['product_price'];
-        $product->product_size = $data['product_size'];
+        $product->product_quantity = $data['product_quantity'];
         $product->created_at = CarbonCarbon::now();
         $get_image = $request->file('product_image');
         if ($get_image) {

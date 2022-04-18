@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller as RootController;
-
+use App\Models\Order as ModelsOrder;
+use App\Models\OrderDetails as ModelsOrderDetails;
 session_start();
 
 
@@ -37,7 +38,10 @@ class AdminController extends Controller
     public  function show_dashboard()
     {
        (new RootController)-> AuthLogin();
-        return view('admin.dashboard');
+       $order = ModelsOrder::join('tbl_user','tbl_user.user_id', '=', 'orders.customer_id')
+       ->orderBy('order_id','DESC')->limit(5)->get();
+
+        return view('admin.dashboard')->with('order',$order);
     }
     public function dashboard(Request $request)
     {
@@ -58,6 +62,30 @@ class AdminController extends Controller
             Session::put('message','Tài khoản hoặc mật khẩu sai, vui lòng nhập lại!');
             return Redirect::to('admin');
         }
+    }public function unactive_order($order_id)
+    {   
+        # code...
+        (new RootController)-> AuthLogin();
+        $order = ModelsOrder::find($order_id);
+        $order->order_status= 0;
+        $order->save();
+        Session::put('message1','Hủy kích hoạt thành công!');
+        return Redirect::to('dashboard');
+        
+    }
+    public function active_order($order_id)
+    {
+        (new RootController)-> AuthLogin();
+        # code...
+        // DB::table('tbl_category')->where('category_id',$category_id)->update(['category_status'=> 1]);
+        $order = ModelsOrder::find($order_id);
+        $order->order_status= 1;
+        $order->save();
+        
+        Session::put('message1','Kích hoạt thành công!');
+        
+        
+        return Redirect::to('dashboard');
     }
 
     public function log_out(Request $request)

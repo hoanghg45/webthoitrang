@@ -17,12 +17,9 @@
                                 {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect12">Size</label>
-                                <select name="product_size" class="form-control" id="exampleFormControlSelect12">
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                </select>
+                                <label for="exampleFormControlSelect12">Số lượng</label>
+                                <input type="number" name="product_quantity" required class="form-control" id="exampleFormControlInput1"
+                                placeholder="Nhập số lượng ">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Mô tả sản phẩm</label>

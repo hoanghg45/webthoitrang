@@ -13,7 +13,10 @@ class HomeController extends Controller
 {
     //
     public function index()
+
+
     {
+        
         $category = ModelsCategory::where('category_status','1')->orderBy('category_id')->get();
         $all_product =  ModelsProduct::where('product_status','1')
                             ->orderBy('created_at','desc')
