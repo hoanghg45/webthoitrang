@@ -10,10 +10,10 @@ class Order extends Model
     use HasFactory; 
     public $timestamps = false;
     protected $fillable = [
-        'customer_id', 'order_status','order_code',
+        'customer_id','address', 'order_status','order_total',
         'created_at'
     ];
     protected $primaryKey = 'order_id';
-    protected $table = 'tbl_order';
+    protected $table = 'orders';
 
 }

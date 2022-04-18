@@ -72,7 +72,7 @@ class UserController extends Controller
         Session::put('user_name',$result->user_name);
         Session::put('user_email',$result->user_email);      
         Session::put('user_phone',$result->user_phone);    
-
+        Session::put('user_id',$result->user_id);  
         Session::put('message', 'Đăng nhập thành công!');
         return Redirect::to('/homepage');
         }
@@ -94,6 +94,7 @@ class UserController extends Controller
         Session::put('user_name',null);
         Session::put('user_email',null); 
         Session::put('user_phone',null); 
+        Session::put('user_id',null); 
         return Redirect::to('/homepage');
     }
     
